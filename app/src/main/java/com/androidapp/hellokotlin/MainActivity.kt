@@ -17,13 +17,15 @@ class MainActivity : AppCompatActivity() {
 
         // var btnHello : Button  //Var 일반적인 변수
         // btnHello = findViewById(R.id.btnHello)
+        var intent: Intent
         val btnJava = findViewById<Button>(R.id.btnJava)
         val btnKotlin = findViewById<Button>(R.id.btnKotlin)
         btnJava.setOnClickListener {
-            intent = Intent(this@MainActivity, BmiJavaActivity::class.java)
+            startActivity(Intent(this@MainActivity,BmiJavaActivity::class.java))
         }
         btnKotlin.setOnClickListener {
-            intent = Intent(this@MainActivity, BmiKotlinActivity :: class.java)
+            startActivity(Intent(this@MainActivity,BmiKotlinActivity::class.java))
+
         }
     }
 }
