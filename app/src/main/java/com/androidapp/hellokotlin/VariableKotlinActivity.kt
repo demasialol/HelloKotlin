@@ -15,16 +15,22 @@ class VariableKotlinActivity : AppCompatActivity() {
         val txtActivityStartTime = findViewById<TextView>(R.id.txtActivityStartTime)
         val txtCountBtnCLicks = findViewById<TextView>(R.id.txtCountBtnClicks)
         val btnClickMe = findViewById<Button>(R.id.btnClickMe)
+        val txtElapsedTime = findViewById<TextView>(R.id.txtElapsedTime)
 
         var clickCount = 0
         val startTIme = System.currentTimeMillis()
         val sTimeStamp = SimpleDateFormat("HH:mm:ss", Locale.KOREA).format(startTIme)
+
+
 
         txtActivityStartTime.text="Activity start time = ${sTimeStamp}"
 
         btnClickMe.setOnClickListener {
             clickCount++
             txtCountBtnCLicks.text = "Button clicks = ${clickCount}"
+
+            var elapsedSeconds = ((System.currentTimeMillis() - startTIme) / 1000.0 ).toLong()
+            txtElapsedTime.text = " ${elapsedSeconds} seconds elapsed"
 
 
         }

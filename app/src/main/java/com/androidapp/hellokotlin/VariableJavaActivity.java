@@ -11,35 +11,38 @@ import java.text.SimpleDateFormat;
 import java.util.Locale;
 
 public class VariableJavaActivity extends AppCompatActivity {
-
-    int clickCount;
-    TextView txtActivityStartTime, txtCountBtnClicks;
+    TextView txtActivityStartTime, txtCountBtnClicks, txtElapsedTime;
     Button btnClickMe;
-    long startTime;
-
+    long elapsedSeconds;
+    int clcikCount;
+    final long startTime= System.currentTimeMillis();
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_variable);
 
         txtActivityStartTime = findViewById(R.id.txtActivityStartTime);
         txtCountBtnClicks = findViewById(R.id.txtCountBtnClicks);
+        txtElapsedTime = findViewById(R.id.txtElapsedTime);
         btnClickMe = findViewById(R.id.btnClickMe);
+        clcikCount=0;
+        long elapsedSeconds=0;
+        long startTime= System.currentTimeMillis();
 
-        clickCount = 0;
-        startTime = System.currentTimeMillis();
-
-        btnClickMe.setOnClickListener(new View.OnClickListener(){
-
+        btnClickMe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clickCount++;
-                txtCountBtnClicks.setText("Button Clicks = " + clickCount);
+                //var elapsedSeconds : Long = ((System.currentTimeMillis()-startTime)/1000.0).toLong()
+
+                //elapsedSeconds = ((System.currentTimeMillis()-startTime)/1000.0);
+                long elapsedSeconds = (long) ((System.currentTimeMillis()-startTime)/1000.0);
+                clcikCount++;
+                txtCountBtnClicks.setText("Button clicks = " +clcikCount);
+                txtElapsedTime.setText("Elapsed Seconds ="+elapsedSeconds);
             }
         });
         String sTimeStamp = new SimpleDateFormat("HH:mm:ss", Locale.KOREA).format(startTime);
-        txtActivityStartTime.setText("activity start time = " +sTimeStamp);
+        txtActivityStartTime.setText("Activity start time = " + sTimeStamp);
 
     }
 }
