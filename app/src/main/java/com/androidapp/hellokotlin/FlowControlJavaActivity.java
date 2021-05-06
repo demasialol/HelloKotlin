@@ -27,13 +27,16 @@ public class FlowControlJavaActivity extends AppCompatActivity {
             public void onClick(View view) {
                 int number = Integer.parseInt(fieldNumber.getText().toString());
                 if (number % 2 == 0 ){
-                    Toast.makeText(getApplicationContext(), ""+number + "은(는) 2의 배수", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(), ""+number + "은(는) 2의 배수", Toast.LENGTH_SHORT).show();
+                    toast_short(number + "은(는) 2의 배수");
                 }
                 else if (number % 3 == 0){
-                    Toast.makeText(getApplicationContext(), ""+number + "은(는) 3의 배수", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(), ""+number + "은(는) 3의 배수", Toast.LENGTH_SHORT).show();
+                    toast_short(number + "은(는) 3의 배수");
                 }
                 else{
-                    Toast.makeText(getApplicationContext(), "" + number + "은(는) else", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getApplicationContext(), "" + number + "은(는) else", Toast.LENGTH_LONG).show();
+                    toast_long(number + "은(는) else");
                 }
                 switch(number){
                     case 4:
@@ -47,6 +50,15 @@ public class FlowControlJavaActivity extends AppCompatActivity {
 
             }
         });
+    }
+    //FlowControlJavaActivity onObject = new ... ()
+    //anObject.toas_short(message);
 
+    private void toast_short(String s){
+        Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
+    }
+
+    private void toast_long(String s){
+        Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
     }
 }
